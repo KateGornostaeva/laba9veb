@@ -12,17 +12,17 @@
     switch ($type) {//выбор из вариантов (вместо if else) (конструкция выбора)
         case 'A':
             break;
-        case 'B':
-            echo '<ul>';
+        case 'B':// если тип верстки В
+            echo '<ul>';// начинаем список
             break;
         case 'C':
-            echo '<ol>';
+            echo '<ol>';//открываем нумерованный список
             break;
         case 'D':
-            echo '<table class="table_block">';
+            echo '<table class="table_block">';//открываем класс таблицы
             break;
         case 'E':
-            echo '<div class="block">';
+            echo '<div class="block">';//открываем класс div
             break;
     }
 
@@ -31,17 +31,17 @@
     switch ($type) {//выбор из вариантов (конструкция выбора)
         case 'A':
             break;
-        case 'B':
-            echo '</ul>';
+        case 'B':// если тип верстки В
+            echo '</ul>';// закрываем тег списка
             break;
         case 'C':
-            echo '</ol>';
+            echo '</ol>';//закрываем тег нумерованного списка
             break;
         case 'D':
-            echo '</table>';
+            echo '</table>';//закрываем таблицу
             break;
         case 'E':
-            echo '</div>';
+            echo '</div>';//закрываем div
             break;
     }
 ?>
@@ -51,6 +51,7 @@
 
 // цикл с заданным количеством итераций
     function algFixedIteration() {
+        //global для того что бы видеть переменные функции
         global $min_value;
         global $max_value;
         global $start;
@@ -66,21 +67,21 @@
 
         $f = 0;
 
-        for ($i = 0; $i < $encouning; $i++, $x += $step) {
+        for ($i = 0; $i < $encouning; $i++, $x += $step) {// цикл с заданным количеством итераций
             $f = getValueFunc($x);
-
+            //заканчивает работу функции вывод значений функций, если 
             if (($f >= $max_value || $f <= $min_value) && $f != 'error') {// если аргумент > или = max_value или
-                //< или = min_value
+                //< или = min_value и не error
                 break;
             }
 
-            if ($f != 'error') {
+            if ($f != 'error') {//если f не ошибка, то значения функции добавляет в массив для подсчета min, max, sum, avg
                 array_push($arr, $f);
             }
 
             addTag($type, $x, $f, $i);
         }
-
+        //выписываем сумму, мин, макс, среднее арифметическое 
         echo '<div class="box">';
         echo 'SUM: ' . array_sum($arr) . '<br>';
         echo 'MIN: ' . min($arr) . '<br>';
@@ -96,7 +97,6 @@
         global $encouning;
         global $step;
         global $type;
-
         global $all;
 
         $arr = [];
@@ -107,10 +107,10 @@
         $i = 0;
         $f = 0;
     
-        while ($i < $encouning && ($f >= $max_value || $f < $min_value || !$i)) {
+        while ($i < $encouning && ($f >= $max_value || $f < $min_value || !$i)) {// цикл с предусловием
             $f = getValueFunc($x);
 
-            if ($f != 'error') {
+            if ($f != 'error') {//если f не ошибка, то значения функции добавляет в массив для подсчета min, max, sum, avg
                 array_push($arr, $f);
             }
 
@@ -135,7 +135,6 @@
         global $encouning;
         global $step;
         global $type;
-
         global $all;
 
         $arr = [];
@@ -143,12 +142,12 @@
 
         $x = $start;
 
-        $i = 0;
+        $i = 0;// начальное значение счетчика итераций
 
-        do {
+        do {// цикл с постусловием
             $f = getValueFunc($x);
 
-            if ($f != 'error') {
+            if ($f != 'error') {//если f не ошибка, то значения функции добавляет в массив для подсчета min, max, sum, avg
                 array_push($arr, $f);
             }
 
@@ -207,7 +206,6 @@
         else{
             $f = round(($x * 8) + 2, 3);
         }
-
         return $f;
     }
 ?>
