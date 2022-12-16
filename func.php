@@ -2,18 +2,17 @@
     // $min_value = -5;
     // $max_value = 5;
 
-    $min_value = -20;
-    $max_value = 1000;
+    $min_value = -20;// минимальное значение, останавливающее вычисления
+    $max_value = 1000;// максимальное значение, останавливающее вычисления
 
     $start = 80;  // start arg
-    // $encouning = 10000;  // кол-во вычисляемых значений
     $encouning = 100;  // кол-во вычисляемых значений
-    $step = 2;
-    $type = 'D';
+    $step = 2;// шаг изменения аргумента
+    $type = 'D';// тип верстки
      
     $all = [];
 
-    switch ($type) {
+    switch ($type) {//выбор из вариантов (вместо if else) (конструкция выбора)
         case 'A':
             break;
         case 'B':
@@ -30,13 +29,9 @@
             break;
     }
 
-// ---------------------- call function ----------------------
-    algFixedIteration();
-    // algPrecondition();
-    // algPostcondition();
-    
-
-    switch ($type) {
+//вызов функции
+    algFixedIteration();     
+    switch ($type) {//выбор из вариантов (конструкция выбора)
         case 'A':
             break;
         case 'B':
@@ -52,13 +47,12 @@
             echo '</div>';
             break;
     }
-
 ?>
 
 
 <?php
 
-// ---------------------- норм цикл ----------------------
+// цикл с заданным количеством итераций
     function algFixedIteration() {
         global $min_value;
         global $max_value;
@@ -66,7 +60,6 @@
         global $encouning;
         global $step;
         global $type;
-
         global $all;
 
         $arr = [];
@@ -75,11 +68,12 @@
         $x = $start;
 
         $f = 0;
-        
+
         for ($i = 0; $i < $encouning; $i++, $x += $step) {
             $f = getValueFunc($x);
 
-            if ($f >= $max_value || $f <= $min_value) {
+            if ($f >= $max_value || $f <= $min_value) {// если аргумент > или = max_value или
+                //< или = min_value
                 break;
             }
 
@@ -97,7 +91,7 @@
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
     }
 
-// ---------------------- цикл с предусловием ----------------------
+// цикл с предусловием
     function algPrecondition() {
         global $min_value;
         global $max_value;
@@ -115,8 +109,7 @@
 
         $i = 0;
         $f = 0;
-
-        // while ($i < $encouning && (($f < $max_value && $f > $min_value) || !$i || $f == 'error')){
+    
         while ($i < $encouning && ($f >= $max_value || $f < $min_value || !$i)) {
             $f = getValueFunc($x);
 
@@ -125,8 +118,6 @@
             }
 
             addTag($type, $x, $f, $i);
-
-            
 
             $i ++;
             $x += $step;
@@ -139,7 +130,7 @@
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
     }
 
-// ---------------------- цикл с постусловием ----------------------
+// цикл с постусловием
     function algPostcondition() {
         global $min_value;
         global $max_value;
@@ -164,13 +155,12 @@
                 array_push($arr, $f);
             }
 
-            
-
             addTag($type, $x, $f, $i);
 
             $i ++;
             $x += $step;
         }
+        
         while ($i < $encouning && ($f >= $max_value || $f < $min_value || !$i));
 
         echo '<div class="box">';
@@ -178,13 +168,9 @@
         echo 'MIN: ' . min($arr) . '<br>';
         echo 'MAX: ' . max($arr) . '<br>';
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
-        
-
-        // while ($i < $encouning && (($f < $max_value && $f > $min_value) || $f == 'error'));
-        
     }
 
-// ---------------------- модальная функция для вывода ----------------------
+// модальная функция для вывода 
     function addTag($type, $x, $f, $i) {
         switch ($type) {
             case 'A':
@@ -208,7 +194,7 @@
         }
     }
 
-// ---------------------- модальная функция для вычеслния f ----------------------
+// модальная функция для вычеслния f
     function getValueFunc($x) {
         if ($x <= 10) {
             $f = round(pow($x, 2) * ($x - 2) + 4, 3);
@@ -224,9 +210,6 @@
                 $f = round(($x - 100)/(100 - $x) - $x/10 + 2, 3);
             }
         }
-
-        // array_push($arr, $f);
-
         return $f;
     }
 ?>
