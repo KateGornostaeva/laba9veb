@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-    background-color: #000000;
+    background-color: #e2e2e2;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -14,16 +14,19 @@ main {
     flex: 1;
     padding: 20px 50px;
     font-size: 24px;
-    color: #fff;
+    color: #000000;
 }
 
-
 header {
-    background-color: rgb(123, 86, 217);
+    background-color: #919191;
     padding: 10px 20px;
-    color: #000000;
-    
-    
+    color: #000000; 
+}
+
+footer {
+    background-color: #6b6b6b;
+    min-height: 90px;
+    color: #000;
 }
 
 .inline{
@@ -39,34 +42,31 @@ header {
 
 }
 
-
-
 .header img {
     width: 200px;
     height: auto;
 }
 
-
 .table_block {
     margin-left: auto;
     margin-right: auto;
     background: url('back_table.jpg') no-repeat center top / cover;
-    color: #fff;
+    color: #000000;
     
 }
 
 table {
-    background-color: #26e4de;
+    background-color: #000000;
     line-height: 1.1;
 }
 
 th {
-    border: 1px solid #000000;
+    border: 1px solid #e2e2e2;
     
 }
 
 td {
-    border: 1px solid #000000;
+    border: 1px solid #e2e2e2;
     min-width: 100px;
     text-align: center;
 }
@@ -75,24 +75,16 @@ td {
 .block {
     background: url('background_lab9.jpg') no-repeat center top / cover;
     text-align: center;
-    
 }
 
 .block_item {
     display: inline-block;
-    background-color: rgba(106, 19, 108, 0.516);
+    background-color: #ffffff;
     padding: 10px;
     margin: 5px 0px;
     margin-right: 8px;
-    border: 2px solid rgb(255, 0, 0);
-    color: #fff;
-}
-
-
-footer {
-    background-color: rgb(123, 86, 217);
-    min-height: 90px;
-    color: #000;
+    border: 2px solid #ffffff;
+    color: #000000;
 }
 
 .footer {
@@ -108,7 +100,7 @@ footer {
 }
 
 .box {
-    background-color: rgba(100, 71, 203, 0.436);
+    background-color: #cbcbcb;
     padding: none;
     margin: none;
 }
