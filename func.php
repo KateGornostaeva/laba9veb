@@ -1,11 +1,8 @@
 <?php
-    // $min_value = -5;
-    // $max_value = 5;
-
-    $min_value = -20;// минимальное значение, останавливающее вычисления
+    $min_value = -100;// минимальное значение, останавливающее вычисления
     $max_value = 1000;// максимальное значение, останавливающее вычисления
 
-    $start = 80;  // start arg
+    $start = -10;  // start arg
     $encouning = 100;  // кол-во вычисляемых значений
     $step = 2;// шаг изменения аргумента
     $type = 'D';// тип верстки
@@ -72,7 +69,7 @@
         for ($i = 0; $i < $encouning; $i++, $x += $step) {
             $f = getValueFunc($x);
 
-            if ($f >= $max_value || $f <= $min_value) {// если аргумент > или = max_value или
+            if (($f >= $max_value || $f <= $min_value) && $f != 'error') {// если аргумент > или = max_value или
                 //< или = min_value
                 break;
             }
@@ -195,21 +192,22 @@
     }
 
 // модальная функция для вычеслния f
-    function getValueFunc($x) {
-        if ($x <= 10) {
-            $f = round(pow($x, 2) * ($x - 2) + 4, 3);
-        }
-        else if ($x > 10 && $x < 20) {
-            $f = round(11 * $x - 55, 3);
-        }
-        else {
-            if ($x == 100) {
+    function getValueFunc($x){
+        if ($x <= 10){
+            if ($x == 0){
                 $f = 'error';
             }
             else {
-                $f = round(($x - 100)/(100 - $x) - $x/10 + 2, 3);
+                $f = round((10 + $x)/$x, 3);
             }
         }
+        else if($x > 10 && $x < 20){
+            $f = round(($x / 7) * ($x - 2), 3);
+        }
+        else{
+            $f = round(($x * 8) + 2, 3);
+        }
+
         return $f;
     }
 ?>
