@@ -39,7 +39,6 @@ footer {
     font-size: 30px;
     color: rgb(0, 0, 0);
     padding-left: 280px;
-
 }
 
 .header img {
@@ -52,7 +51,6 @@ footer {
     margin-right: auto;
     background: url('back_table.jpg') no-repeat center top / cover;
     color: #000000;
-    
 }
 
 table {
@@ -70,7 +68,6 @@ td {
     min-width: 100px;
     text-align: center;
 }
-
 
 .block {
     background: url('background_lab9.jpg') no-repeat center top / cover;
@@ -95,6 +92,7 @@ td {
 .right{
     float: right;
 }
+
 .left{
     float: left;
 }
