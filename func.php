@@ -6,7 +6,7 @@
     $encouning = 100;  // кол-во вычисляемых значений
     $step = 2;// шаг изменения аргумента
     $type = 'D';// тип верстки
-     
+
     $all = [];
 
     switch ($type) {//выбор из вариантов (вместо if else) (конструкция выбора)
@@ -15,13 +15,13 @@
         case 'B':// если тип верстки В
             echo '<ul>';// начинаем список
             break;
-        case 'C':
+        case 'C':// если тип верстки С
             echo '<ol>';//открываем нумерованный список
             break;
-        case 'D':
+        case 'D':// если тип верстки D
             echo '<table class="table_block">';//открываем класс таблицы
             break;
-        case 'E':
+        case 'E':// если тип верстки E
             echo '<div class="block">';//открываем класс div
             break;
     }
@@ -46,10 +46,8 @@
     }
 ?>
 
-
 <?php
-
-// цикл с заданным количеством итераций
+    // цикл с заданным количеством итераций
     function algFixedIteration() {
         //global для того что бы видеть переменные функции
         global $min_value;
@@ -70,8 +68,8 @@
         for ($i = 0; $i < $encouning; $i++, $x += $step) {// цикл с заданным количеством итераций
             $f = getValueFunc($x);
             //заканчивает работу функции вывод значений функций, если 
-            if (($f >= $max_value || $f <= $min_value) && $f != 'error') {// если аргумент > или = max_value или
-                //< или = min_value и не error
+            if (($f >= $max_value || $f <= $min_value) && $f != 'error') {
+                // если аргумент >= max_value или <= min_value и не error
                 break;
             }
 
@@ -89,7 +87,7 @@
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
     }
 
-// цикл с предусловием
+    // цикл с предусловием
     function algPrecondition() {
         global $min_value;
         global $max_value;
@@ -119,7 +117,7 @@
             $i ++;
             $x += $step;
         }
-
+        //выписываем сумму, мин и тд
         echo '<div class="box">';
         echo 'SUM: ' . array_sum($arr) . '<br>';
         echo 'MIN: ' . min($arr) . '<br>';
@@ -127,7 +125,7 @@
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
     }
 
-// цикл с постусловием
+    // цикл с постусловием
     function algPostcondition() {
         global $min_value;
         global $max_value;
@@ -166,7 +164,7 @@
         echo 'AVG: ' . array_sum($arr) / count($arr) . '<br></div>';
     }
 
-// модальная функция для вывода 
+    // модальная функция для вывода 
     function addTag($type, $x, $f, $i) {
         switch ($type) {
             case 'A':
@@ -190,14 +188,14 @@
         }
     }
 
-// модальная функция для вычеслния f
+    // модальная функция для вычеслния f (вариант 2)
     function getValueFunc($x){
         if ($x <= 10){
             if ($x == 0){
                 $f = 'error';
             }
             else {
-                $f = round((10 + $x)/$x, 3);
+                $f = round((10 + $x)/$x, 3); //вычисляем и округляем результат до 3‐х знаков после запятой
             }
         }
         else if($x > 10 && $x < 20){
